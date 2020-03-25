@@ -14,11 +14,10 @@ async function logger(ctx, next) {
 
 ctx作为上下文使用,包括基本的ctx.request和ctx.response另外koa通过delegates这个库对request, response一些常用属性或者方法,做了很多代理操作,可以直接通过ctx访问得到,比如request.url可以写成ctx.url。除此之外,koa还约定了一个中间件的存储空间ctx.state通过这个state可以储存一些的数据,比如用户数据,另外类似koa-views这些渲染view层的中间件也会默认把ctx.state里面的属性作为view的上下文传入。
 
-如果使用webpack打包的话可以使用中间将加载资源的方法作为ctx.state的属性传入到view层使之获取资源路径。
-
 另外一个参数next,上面也讲过,他的作用是将处理的控制权交给下一个中间件,next()后面的代码会在后面中间件执行结束后执行。
 
 还有,因为中间件是按顺序执行,所以中间件的顺序也非常重要,另外路由执行顺序也是一样,因为都是通过中间件实现,所以路由的话应该把,容易匹配到的放在后面.
+
 比如路由规则包含了/all和/:id那么对/all处理的中间件应该放在/:id之前。
 
 ### koa2的中间件实现
