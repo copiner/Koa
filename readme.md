@@ -30,15 +30,15 @@ app.use(logger)
 koa实例对象app包含了一个数组属性middleware,通过use方法,将中间件push到数组中,源码如下
 ```
 use(fn) {
-    if (typeof fn !== 'function') throw new TypeError('middleware must be a function!');
-    if (isGeneratorFunction(fn)) {
-      deprecate('Support for generators will been removed in v3. ' +
-                'See the documentation for examples of how to convert old middleware ' +
-                'https://github.com/koajs/koa/tree/v2.x#old-signature-middleware-v1x');
-      fn = convert(fn);
-    }
-    debug('use %s', fn._name || fn.name || '-');
-    this.middleware.push(fn);
-    return this;
+  if (typeof fn !== 'function') throw new TypeError('middleware must be a function!');
+  if (isGeneratorFunction(fn)) {
+    deprecate('Support for generators will be removed in v3. ' +
+              'See the documentation for examples of how to convert old middleware ' +
+              'https://github.com/koajs/koa/blob/master/docs/migration.md');
+    fn = convert(fn);
+  }
+  debug('use %s', fn._name || fn.name || '-');
+  this.middleware.push(fn);
+  return this;
 }
 ```

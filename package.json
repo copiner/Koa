@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app"
+    "abc": "node abc/app",
+    "middle": "node middleware/app",
+    "test": "node demo/app"
   },
-  "keywords": [],
+  "keywords": ["koa","middleware"],
   "author": "copiner",
   "license": "ISC",
   "dependencies": {
     "@koa/router": "^8.0.8",
     "koa": "^2.11.0",
-    "koa-logger": "^3.2.1"
+    "koa-body": "^4.1.1",
+    "koa-logger": "^3.2.1",
+    "swig": "^1.4.2"
   }
 }
